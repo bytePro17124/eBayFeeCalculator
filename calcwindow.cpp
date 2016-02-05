@@ -2,7 +2,7 @@
 #include "ui_calcwindow.h"
 
 CalcWindow::CalcWindow(QWidget *parent) :
-    QDialog(parent),
+    QMainWindow(parent),
     ui(new Ui::CalcWindow)
 {
     ui->setupUi(this);

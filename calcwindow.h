@@ -1,13 +1,13 @@
 #ifndef CALCWINDOW_H
 #define CALCWINDOW_H
 
-#include <QDialog>
+#include <QMainWindow>
 
 namespace Ui {
 class CalcWindow;
 }
 
-class CalcWindow : public QDialog
+class CalcWindow : public QMainWindow
 {
     Q_OBJECT
 
@@ -17,6 +17,7 @@ public:
 
 private:
     Ui::CalcWindow *ui;
+
 };
 
 #endif // CALCWINDOW_H
