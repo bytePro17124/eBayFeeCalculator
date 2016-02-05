@@ -12,9 +12,11 @@ TARGET = eBayFeeCalculator
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp
+SOURCES += main.cpp \
+    calcwindow.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += \
+    calcwindow.h
 
-FORMS    += mainwindow.ui
+FORMS    += \
+    calcwindow.ui
