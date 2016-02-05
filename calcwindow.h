@@ -15,8 +15,23 @@ public:
     explicit CalcWindow(QWidget *parent = 0);
     ~CalcWindow();
 
+private slots:
+
+
+    void on_Calculate_button_released();
+
+    void on_Close_button_released();
+
+    void on_actionExit_triggered();
+
 private:
     Ui::CalcWindow *ui;
+
+    float calculate_Ebay_Fees(const float&, const float&);
+    float calculate_Paypal_Fees(const float&, const float&);
+
+    float final_sale_price, shipping_price, actual_shipping_cost, ebay_fees, paypal_fees;
+
 };
 
 #endif // CALCWINDOW_H
