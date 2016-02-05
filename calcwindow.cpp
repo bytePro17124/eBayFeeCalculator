@@ -3,6 +3,7 @@
 #include <QMessageBox>
 #include <QDoubleValidator>
 #include <QString>
+#include <QMediaPlayer>
 
 CalcWindow::CalcWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,6 +15,8 @@ CalcWindow::CalcWindow(QWidget *parent) :
     ui->Actual_Shipping_Cost_Field->setInputMask("000000.00;_");
     final_sale_price = shipping_price = \
             actual_shipping_cost = ebay_fees = paypal_fees = 0;
+    chaching = new QMediaPlayer();
+    chaching->setMedia(QUrl("qrc:sounds/chaching.wav"));
 }
 
 CalcWindow::~CalcWindow()
@@ -39,18 +42,30 @@ void CalcWindow::on_Calculate_button_released()
         invalid.setWindowTitle("Cannot Continue");
         invalid.exec();
     } else {
+
         final_sale_price = ui->Final_Item_Price_Field->text().toFloat();
         actual_shipping_cost = ui->Actual_Shipping_Cost_Field->text().toFloat();
         shipping_price = ui->Shipping_Charged_Field->text().toFloat();
-        ebay_fees = calculate_Ebay_Fees(ui->Final_Item_Price_Field->text().toFloat(), \
-                                        ui->Shipping_Charged_Field->text().toFloat());
-        paypal_fees = calculate_Paypal_Fees(ui->Final_Item_Price_Field->text().toFloat(), \
-                                          ui->Shipping_Charged_Field->text().toFloat());
-        ui->Details_Text_Area->setText("TotalProfit = $" + QString::number((final_sale_price + shipping_price) \
-                                                                          - (ebay_fees + paypal_fees) ));
+        ebay_fees = calculate_Ebay_Fees(final_sale_price, shipping_price);
+        paypal_fees = calculate_Paypal_Fees(final_sale_price, shipping_price);
 
+        ui->Details_Text_Area->setText("Amount charged to buyer = $" +\
+                                       QString::number(final_sale_price + shipping_price));
+        ui->Details_Text_Area->append("<br>Total fees (eBay+Paypal) = -$" +\
+                                      QString::number(ebay_fees + paypal_fees));
+        ui->Details_Text_Area->append("<br>Actual shipping cost = -$" +\
+                                      QString::number(actual_shipping_cost));
+        ui->Details_Text_Area->append("<br>Total PROFIT = $" +\
+                                      QString::number((final_sale_price + shipping_price) -\
+                                                      (ebay_fees + paypal_fees + actual_shipping_cost)));
 
-   //     QString qStr = QString::number(iNumber);
+        if (chaching->state() == QMediaPlayer::StoppedState){
+            chaching->play();
+        }
+        else
+        {
+            chaching->stop();
+        }
     }
 }
 

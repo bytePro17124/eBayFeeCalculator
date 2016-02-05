@@ -2,6 +2,7 @@
 #define CALCWINDOW_H
 
 #include <QMainWindow>
+#include <QMediaPlayer>
 
 namespace Ui {
 class CalcWindow;
@@ -31,6 +32,8 @@ private:
     float calculate_Paypal_Fees(const float&, const float&);
 
     float final_sale_price, shipping_price, actual_shipping_cost, ebay_fees, paypal_fees;
+
+    QMediaPlayer * chaching;
 
 };
 

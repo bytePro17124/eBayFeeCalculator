@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/sounds">
+        <file>chaching.wav</file>
+    </qresource>
+</RCC>
