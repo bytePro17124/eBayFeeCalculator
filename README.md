@@ -1,3 +1,4 @@
 # eBayFeeCalculator
 
-Small program to calculat what your fees will be.
+![alt tag](https://i.imgur.com/MLtMdtD.png)
+
