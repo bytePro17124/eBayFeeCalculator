@@ -25,3 +25,5 @@ DISTFILES +=
 
 RESOURCES += \
     resources.qrc
+
+win32:RC_ICONS += plogo_blue.ico
