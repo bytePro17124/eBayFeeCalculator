@@ -25,7 +25,14 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void on_radioButton_clicked();
+
+    void on_radioButton_2_clicked();
+
+    void on_PepperBay_button_released();
+
 private:
+
     Ui::CalcWindow *ui;
 
     float calculate_Ebay_Fees(const float&, const float&);
@@ -34,6 +41,10 @@ private:
     float final_sale_price, shipping_price, actual_shipping_cost, ebay_fees, paypal_fees;
 
     QMediaPlayer * chaching;
+
+    bool soundon;
+
+
 
 };
 

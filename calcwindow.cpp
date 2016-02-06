@@ -4,19 +4,28 @@
 #include <QDoubleValidator>
 #include <QString>
 #include <QMediaPlayer>
+#include <QIcon>
+#include <QDesktopServices>
 
 CalcWindow::CalcWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::CalcWindow)
 {
     ui->setupUi(this);
-    ui->Final_Item_Price_Field->setInputMask("000000.00;_");
-    ui->Shipping_Charged_Field->setInputMask("000000.00;_");
-    ui->Actual_Shipping_Cost_Field->setInputMask("000000.00;_");
+
+//    ui->Final_Item_Price_Field->setInputMask("000000.00;_");
+//    ui->Shipping_Charged_Field->setInputMask("000.00;_");
+//    ui->Actual_Shipping_Cost_Field->setInputMask("000.00;_");
+
     final_sale_price = shipping_price = \
             actual_shipping_cost = ebay_fees = paypal_fees = 0;
+    ui->PepperBay_button->setIcon(QIcon(":/images/pepperbay1.jpg"));
+    ui->PepperBay_button->setIconSize(QSize(248,248));
+    soundon = false;
     chaching = new QMediaPlayer();
     chaching->setMedia(QUrl("qrc:sounds/chaching.wav"));
+
+
 }
 
 CalcWindow::~CalcWindow()
@@ -59,12 +68,10 @@ void CalcWindow::on_Calculate_button_released()
                                       QString::number((final_sale_price + shipping_price) -\
                                                       (ebay_fees + paypal_fees + actual_shipping_cost)));
 
-        if (chaching->state() == QMediaPlayer::StoppedState){
-            chaching->play();
-        }
-        else
-        {
-            chaching->stop();
+
+        if (soundon) {
+            if (chaching->state() == QMediaPlayer::StoppedState) chaching->play();
+            else chaching->stop();
         }
     }
 }
@@ -91,7 +98,25 @@ float CalcWindow::calculate_Ebay_Fees(const float& finalprice, const float& ship
 
 float CalcWindow::calculate_Paypal_Fees(const float& finalprice, const float& shippingprice) {
 
-    float paypalfees = .30  + ((finalprice + shippingprice) * .03);
+    float paypalfees = 0;
+
+    if (finalprice+shippingprice > .01) paypalfees = .30  + ((finalprice + shippingprice) * .03);
 
     return paypalfees;
+}
+
+void CalcWindow::on_radioButton_clicked()
+{
+    soundon = true;
+}
+
+void CalcWindow::on_radioButton_2_clicked()
+{
+    soundon = false;
+}
+
+void CalcWindow::on_PepperBay_button_released()
+{
+    QString link = "https://www.ebay.com/myb/Summary";
+    QDesktopServices::openUrl(QUrl(link));
 }

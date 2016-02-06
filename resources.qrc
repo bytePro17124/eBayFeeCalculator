@@ -2,4 +2,8 @@
     <qresource prefix="/sounds">
         <file>chaching.wav</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>pepperbay1.jpg</file>
+        <file>plogo_blue.jpg</file>
+    </qresource>
 </RCC>
