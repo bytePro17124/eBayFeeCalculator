@@ -31,6 +31,8 @@ private slots:
 
     void on_PepperBay_button_released();
 
+    void on_actionAbout_triggered();
+
 private:
 
     Ui::CalcWindow *ui;

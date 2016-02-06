@@ -224,8 +224,8 @@
        <widget class="QTextBrowser" name="Details_Text_Area">
         <property name="font">
          <font>
-          <family>Garamond</family>
-          <pointsize>13</pointsize>
+          <family>Century</family>
+          <pointsize>11</pointsize>
           <weight>50</weight>
           <bold>false</bold>
          </font>

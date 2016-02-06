@@ -27,3 +27,5 @@ RESOURCES += \
     resources.qrc
 
 win32:RC_ICONS += plogo_blue.ico
+
+CONFIG += debug_and_release

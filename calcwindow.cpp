@@ -35,22 +35,22 @@ CalcWindow::~CalcWindow()
 
 void CalcWindow::on_Calculate_button_released()
 {
-    if (ui->Final_Item_Price_Field->text().isEmpty()) {
-        QMessageBox invalid;
-        invalid.setText("Please fill out the the final item price field.");
-        invalid.setWindowTitle("Cannot Continue");
-        invalid.exec();
-    } else if (ui->Shipping_Charged_Field->text().isEmpty()) {
-        QMessageBox invalid;
-        invalid.setText("Please fill out the the shipping chargee field.");
-        invalid.setWindowTitle("Cannot Continue");
-        invalid.exec();
-    } else if (ui->Actual_Shipping_Cost_Field->text().isEmpty()) {
-        QMessageBox invalid;
-        invalid.setText("Please fill out the the actual shipping charged field.");
-        invalid.setWindowTitle("Cannot Continue");
-        invalid.exec();
-    } else {
+//    if (ui->Final_Item_Price_Field->text().isEmpty()) {
+//        QMessageBox invalid;
+//        invalid.setText("Please fill out the the final item price field.");
+//        invalid.setWindowTitle("Cannot Continue");
+//        invalid.exec();
+//    } else if (ui->Shipping_Charged_Field->text().isEmpty()) {
+//        QMessageBox invalid;
+//        invalid.setText("Please fill out the the shipping chargee field.");
+//        invalid.setWindowTitle("Cannot Continue");
+//        invalid.exec();
+//    } else if (ui->Actual_Shipping_Cost_Field->text().isEmpty()) {
+//        QMessageBox invalid;
+//        invalid.setText("Please fill out the the actual shipping charged field.");
+//        invalid.setWindowTitle("Cannot Continue");
+//        invalid.exec();
+//    } else {
 
         final_sale_price = ui->Final_Item_Price_Field->text().toFloat();
         actual_shipping_cost = ui->Actual_Shipping_Cost_Field->text().toFloat();
@@ -73,7 +73,7 @@ void CalcWindow::on_Calculate_button_released()
             if (chaching->state() == QMediaPlayer::StoppedState) chaching->play();
             else chaching->stop();
         }
-    }
+//    }
 }
 
 void CalcWindow::on_Close_button_released()
@@ -119,4 +119,12 @@ void CalcWindow::on_PepperBay_button_released()
 {
     QString link = "https://www.ebay.com/myb/Summary";
     QDesktopServices::openUrl(QUrl(link));
+}
+
+void CalcWindow::on_actionAbout_triggered()
+{
+    QMessageBox about;
+    about.setText("Programmed by matthewjearly@gmail.com <br> Special thanks to Andrew R.");
+    about.setWindowTitle("About PepperBay");
+    about.exec();
 }
