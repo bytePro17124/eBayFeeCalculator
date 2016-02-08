@@ -58,15 +58,15 @@ void CalcWindow::on_Calculate_button_released()
         ebay_fees = calculate_Ebay_Fees(final_sale_price, shipping_price);
         paypal_fees = calculate_Paypal_Fees(final_sale_price, shipping_price);
 
-        ui->Details_Text_Area->setText("Amount charged to buyer = $" +\
-                                       QString::number(final_sale_price + shipping_price));
-        ui->Details_Text_Area->append("<br>Total fees (eBay+Paypal) = -$" +\
-                                      QString::number(ebay_fees + paypal_fees));
-        ui->Details_Text_Area->append("<br>Actual shipping cost = -$" +\
-                                      QString::number(actual_shipping_cost));
-        ui->Details_Text_Area->append("<br>Total PROFIT = $" +\
-                                      QString::number((final_sale_price + shipping_price) -\
-                                                      (ebay_fees + paypal_fees + actual_shipping_cost)));
+        ui->Details_Text_Area->setText("Amount charged to buyer = $" \
+                                       + QString::number(final_sale_price + shipping_price));
+        ui->Details_Text_Area->append("<br>Total fees (eBay+Paypal) = -$" \
+                                      + QString::number(ebay_fees + paypal_fees));
+        ui->Details_Text_Area->append("<br>Actual shipping cost = -$" \
+                                      + QString::number(actual_shipping_cost));
+        ui->Details_Text_Area->append("<br>Total PROFIT = $" \
+                                      + QString::number((final_sale_price + shipping_price) \
+                                                      - (ebay_fees + paypal_fees + actual_shipping_cost)));
 
 
         if (soundon) {
@@ -100,7 +100,7 @@ float CalcWindow::calculate_Paypal_Fees(const float& finalprice, const float& sh
 
     float paypalfees = 0;
 
-    if (finalprice+shippingprice > .01) paypalfees = .30  + ((finalprice + shippingprice) * .03);
+    if (finalprice+shippingprice > .01) paypalfees = .30  + ((finalprice + shippingprice) * .029);
 
     return paypalfees;
 }
