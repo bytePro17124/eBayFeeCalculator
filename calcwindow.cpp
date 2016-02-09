@@ -58,13 +58,17 @@ void CalcWindow::on_Calculate_button_released()
         ebay_fees = calculate_Ebay_Fees(final_sale_price, shipping_price);
         paypal_fees = calculate_Paypal_Fees(final_sale_price, shipping_price);
 
-        ui->Details_Text_Area->setText("Amount charged to buyer = $" \
+        ui->Details_Text_Area->setText("<font color=blue>Amount charged to buyer = $" \
                                        + QString::number(final_sale_price + shipping_price));
-        ui->Details_Text_Area->append("<br>Total fees (eBay+Paypal) = -$" \
+        ui->Details_Text_Area->append("<br><font color=red>eBay fees (Paypal) = $" \
+                                      + QString::number(ebay_fees));
+        ui->Details_Text_Area->append("<br><font color=red>Paypal fees (Paypal) = $" \
+                                      + QString::number(paypal_fees));
+        ui->Details_Text_Area->append("<br><font color=black><b>Total fees (eBay+Paypal) = $" \
                                       + QString::number(ebay_fees + paypal_fees));
-        ui->Details_Text_Area->append("<br>Actual shipping cost = -$" \
+        ui->Details_Text_Area->append("<br><font color=red>Actual shipping cost = $" \
                                       + QString::number(actual_shipping_cost));
-        ui->Details_Text_Area->append("<br>Total PROFIT = $" \
+        ui->Details_Text_Area->append("<br><font color=green><b>Total PROFIT = $" \
                                       + QString::number((final_sale_price + shipping_price) \
                                                       - (ebay_fees + paypal_fees + actual_shipping_cost)));
 
