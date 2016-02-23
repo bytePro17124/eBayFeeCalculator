@@ -60,9 +60,9 @@ void CalcWindow::on_Calculate_button_released()
 
         ui->Details_Text_Area->setText("<font color=blue>Amount charged to buyer = $" \
                                        + QString::number(final_sale_price + shipping_price));
-        ui->Details_Text_Area->append("<br><font color=red>eBay fees (Paypal) = $" \
+        ui->Details_Text_Area->append("<br><font color=red>eBay fees = $" \
                                       + QString::number(ebay_fees));
-        ui->Details_Text_Area->append("<br><font color=red>Paypal fees (Paypal) = $" \
+        ui->Details_Text_Area->append("<br><font color=red>Paypal fees = $" \
                                       + QString::number(paypal_fees));
         ui->Details_Text_Area->append("<br><font color=black><b>Total fees (eBay+Paypal) = $" \
                                       + QString::number(ebay_fees + paypal_fees));
