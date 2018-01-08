@@ -1,12 +1,12 @@
 # eBayFeeCalculator
 
+This program runs calculations on Sold eBay Items, subtracting out fees and showing you the Net monetary gain. It is based on the known fees.
+
 Download [Here for Windows](https://www.dropbox.com/s/cvr6iynau3a6hbg/eBayFeeCalculator-win32.zip?dl=0)  
-* doesn't seem to work in windows 10 anymore as they've changed something about the dll's 
+  * if this doesn't work(and it may not its been a while since I worked and checked on this), use Qt Creator to compile and run it.
 
-Use Qt-Creator to compile this program and run it.
+To use Qt-Creator to compile this program and run it: install Qt Creator, Clone this Repo, Open this Repo with Qt Creator and press compile. (Ctrl + R)
 
-Runs some basic calculations on eBay and Paypal fees for your sold items. It is based on the known fees and may not be perfect for every scenario.
 
-Here is a Screenshot:  
 ![alt tag](https://i.imgur.com/MLtMdtD.png)
 
